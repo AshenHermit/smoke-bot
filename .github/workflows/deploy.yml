@@ -22,10 +22,13 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Test SSH connectivity
+        run: ssh -vvv -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} exit
+
       - name: Sync project to server
         run: |
           rsync -az --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT }}" \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -vvv" \
             --exclude '.git' \
             --exclude '.github' \
             --exclude '.venv' \
