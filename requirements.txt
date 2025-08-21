@@ -1,0 +1,6 @@
+asyncpg
+aiogram
+asyncio
+tortoise-orm[asyncpg]
+python-dotenv
+pytz

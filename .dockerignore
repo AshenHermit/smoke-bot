@@ -1,0 +1,9 @@
+.git
+__pycache__
+.venv
+*.pyc
+.vscode
+*.log
+.env
+Untitled-1.ipynb
+
